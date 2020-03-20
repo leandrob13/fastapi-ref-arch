@@ -1,0 +1,8 @@
+*.pyc
+venv
+.idea
+.DS_Store
+.pytest_cache
+.coverage
+.mypy_cache
+htmlcov

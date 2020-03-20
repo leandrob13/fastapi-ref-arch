@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==5.3.5"
+pytest-asyncio = "==0.10.0"
+pytest-cov = "==2.8.1"
+requests = "*"
+factory_boy = "*"
+mypy = "*"
+black = "==19.10b0"
+invoke = "*"
+
+
+[packages]
+fastapi = "*"
+hypercorn = "*"
+httpx = "*"
+asyncpg = "*"
+tortoise-orm = "*"
+certifi = "*"
+
+[requires]
+python_version = "3.8"

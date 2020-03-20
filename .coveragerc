@@ -1,0 +1,10 @@
+[run]
+omit =
+    src/app/config.py
+    src/test/*
+    src/http/*
+branch = True
+
+[report]
+fail_under = 69.0
+skip_empty = True

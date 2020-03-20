@@ -1,0 +1,15 @@
+stages:
+  - test
+
+test:
+  image: python:3.8
+  stage: test
+  variables:
+    LC_ALL: C.UTF-8
+    LANG: C.UTF-8
+  script:
+    - PATH=$PATH:/home/nonroot/.local/bin
+    - pip install pipenv
+    - pipenv --python 3.8
+    - pipenv install --dev
+    - pipenv run invoke build
