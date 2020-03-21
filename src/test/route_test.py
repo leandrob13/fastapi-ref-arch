@@ -30,8 +30,8 @@ def tapp() -> FastAPI:
 @pytest.mark.asyncio
 async def test_get_person(tapp: FastAPI) -> None:
     async with AsyncClient(app=tapp, base_url=base_url) as client:
-        params = {"name": "Leia"}
-        response: Response = await client.get("/person", params=params)
-        person_response = PersonResponse.parse_obj(response)
+        name = "Leia"
+        response: Response = await client.get(f"/character/{name}")
+        person_response = PersonResponse.parse_obj(response.json())
         assert response.status_code == 200
-        assert person_response.name == "Leia"
+        assert person_response.name == name

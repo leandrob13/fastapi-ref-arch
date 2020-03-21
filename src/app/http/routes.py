@@ -21,7 +21,7 @@ async def shutdown() -> None:
 
 
 @router.get("/character/{name}", response_model=PersonResponse)
-async def images(
+async def characters(
     name: Text, container: ServiceContainer = Depends(service_container),
 ) -> PersonResponse:
     return await container.sw_client.get_person_by_id(name)
