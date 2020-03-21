@@ -1,6 +1,4 @@
-# Image Metadata API
-
-POC application for image data collection and VSS accuracy assesment. 
+# Python Reference Architecture 
 
 ## Setting up Pipenv:
 
