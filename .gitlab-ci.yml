@@ -12,4 +12,4 @@ test:
     - pip install pipenv
     - pipenv --python 3.8
     - pipenv install --dev
-    - pipenv run invoke build
+    - pipenv run invoke validate
