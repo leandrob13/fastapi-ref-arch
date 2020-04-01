@@ -8,7 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from hypercorn.asyncio import serve
 from hypercorn.config import Config
 from tortoise.contrib.starlette import register_tortoise
-
+import uvloop
 from src.app.config import DATABASE_URL, APP_PORT
 from src.app.http.errors.handlers import validation_exception_handler
 
@@ -23,7 +23,7 @@ class Server:
     loop: AbstractEventLoop
 
     def __init__(self, r: APIRouter, loop: Optional[AbstractEventLoop] = None) -> None:
-        self.loop = loop if loop is not None else asyncio.get_event_loop()
+        self.loop = loop if loop is not None else Server.create_loop()
         self.loop.add_signal_handler(signal.SIGTERM, self.signal_handler)
         self.loop.add_signal_handler(signal.SIGINT, self.signal_handler)
         self.app.include_router(r)
@@ -36,6 +36,13 @@ class Server:
             modules={"models": ["src.app.db.models"]},
             generate_schemas=True,
         )
+
+    @staticmethod
+    def create_loop() -> AbstractEventLoop:
+        asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        return loop
 
     def signal_handler(self, *_: Any) -> None:
         self.logger.info("Handling termination signal, terminating loop.")
