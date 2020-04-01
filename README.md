@@ -12,7 +12,7 @@ First install pipenv:
 pip3 install pipenv
 ```
 
-In the project's root execute to create the virtual environment with python 3.7:
+In the project's root execute to create the virtual environment with python 3.8:
 
 ```shell script
 pipenv --python 3.8 
@@ -63,7 +63,7 @@ This command will generate the html coverage report and store it htmlcov folder 
 To run `Black` code formatter:
 
 ```shell script
-pipenv run invoke format_code
+pipenv run invoke formatcode
 ```
 
 To run all the tasks above:

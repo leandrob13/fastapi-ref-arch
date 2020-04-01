@@ -1,7 +1,7 @@
 from invoke import task
 
 @task
-def format_code(c):
+def formatcode(c):
     print("Running black formatter")
     c.run("pipenv run black src")
 
@@ -18,7 +18,7 @@ def tests(c):
     c.run("pipenv run coverage html -i")
 
 
-@task(mypy, format_code, tests)
+@task(mypy, formatcode, tests)
 def validate(c):
     print("DONE")
 

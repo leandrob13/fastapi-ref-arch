@@ -16,7 +16,7 @@ invoke = "*"
 
 [packages]
 fastapi = "*"
-hypercorn = "*"
+hypercorn = {extras = ["uvloop"],version = "*"}
 httpx = "*"
 asyncpg = "*"
 tortoise-orm = "*"
